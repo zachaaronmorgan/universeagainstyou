@@ -9,12 +9,12 @@ class UniverseAgainstYou:
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
-        self.ship = Ship(self)
         self.clock = pygame.time.Clock()
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         
+        self.ship = Ship(self)
         pygame.display.set_caption("Universe Against You")
         self.bg_color = (230, 230, 230)
 

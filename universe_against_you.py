@@ -9,14 +9,13 @@ class UniverseAgainstYou:
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
+        pygame.display.set_caption("Universe Against You")
         self.clock = pygame.time.Clock()
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
-        
         self.ship = Ship(self)
-        pygame.display.set_caption("Universe Against You")
-        self.bg_color = (230, 230, 230)
+        
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -24,7 +23,6 @@ class UniverseAgainstYou:
             self._check_events()
             self._update_screen()
             self.clock.tick(60)
-          
     
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -32,7 +30,8 @@ class UniverseAgainstYou:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                self._check_keydown_events(event)
+                if event.key == pygame.K_RIGHT:
+                    self.ship.rect.x += 1
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
     
